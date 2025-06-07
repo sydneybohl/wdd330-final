@@ -1,0 +1,1 @@
+/*store and retrieve recent or favorite locations using localStorage*/

@@ -1,0 +1,1 @@
+/*create the daily weather forecast that will show on the website*/

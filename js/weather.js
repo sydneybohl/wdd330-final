@@ -1,0 +1,1 @@
+/*fetching current weather and 5-day forecast data from weather API*/
