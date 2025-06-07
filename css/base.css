@@ -1,3 +1,4 @@
+/* Applied to Whole Screen */
 body {
     font-family: Verdana, Tahoma, sans-serif;
     margin: 0;
@@ -10,6 +11,7 @@ h2 {
     font-weight: bold;
 }
 
+/* Header and Footer Content */
 header,
 footer {
     background-color: #47A2DF;
@@ -30,4 +32,30 @@ header h1 {
 .logo {
     height: 100px;
     width: auto;
+}
+
+/* Start of Sections */
+.centered-section {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.row-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 1rem auto;
+    gap: 1rem;
+    max-width: 1100px;
+    padding: 0 1rem;
+}
+
+.daily-section,
+.five-day-section,
+.pollen-section,
+.comfort-section,
+.suggestion-section {
+    flex: 1;
+    min-width: 250px;
 }
