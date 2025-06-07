@@ -4,19 +4,68 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="css/base.css">
+    <script src="main.js"></script>
     <link rel="icon" href="images/favicon.ico">
     <title>ClearSkies - Weather & Pollen Forecast</title>
 </head>
 
 <body>
     <header>
-        <a id="logo-link" href="index.html">
+        <div class="logo-header">
             <img class="logo" src="images/clearskieslogo.png" alt="Clear Skies Logo">
-        </a>
-        <h1>
-            Clear Skies
-        </h1>
+            <h1>Clear Skies</h1>
+        </div>
     </header>
+
+    <main>
+        <!--Location Display-->
+        <section id="location-section">
+            <h2>Location:</h2>
+            <div id="location">
+                <!--City Name, Zip Code....-->
+            </div>
+        </section>
+
+        <!--Daily Weather-->
+        <section id="daily-section">
+            <h2>Daily Forecast</h2>
+            <div id="daily-forecast">
+                <!--Current temperature, highs and lows....-->
+            </div>
+        </section>
+
+        <!--5-Day Forecast-->
+        <section id="five-day-section">
+            <h2>5-Day Forecast</h2>
+            <div id="five-day-forecast">
+                <!--Highs and lows, icon, etc....-->
+            </div>
+        </section>
+
+        <!--Pollen Counts-->
+        <section id="pollen-section">
+            <h2>Pollen Counts</h2>
+            <div id="pollen-counts">
+                <!--Tree, grass, weed pollen levels....-->
+            </div>
+        </section>
+
+        <!--Comfort Level-->
+        <section id="comfort-section">
+            <h2>Comfort Level</h2>
+            <div id="comfort-score">
+                <!--Calculated comfort score....-->
+            </div>
+        </section>
+
+        <!--Suggestions-->
+        <section id="suggestion-section">
+            <h2>Suggestions</h2>
+            <div id="weather-suggestions">
+                <!--Friendly commentary or fun message....-->
+            </div>
+        </section>
+    </main>
 
     <footer>
         <p>WDD 330 - Final Project - Sydney Bohl - 2025</p>
