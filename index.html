@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="css/base.css">
-    <script src="main.js"></script>
+    <script type="module" src="js/main.js"></script>
     <link rel="icon" href="images/favicon.ico">
     <title>ClearSkies - Weather & Pollen Forecast</title>
 </head>
@@ -15,6 +15,11 @@
             <img class="logo" src="images/clearskieslogo.png" alt="Clear Skies Logo">
             <h1>Clear Skies</h1>
         </div>
+
+        <form id="search-form">
+            <input type="text" id="search-input" placeholder="Enter city or ZIP Code" />
+            <button type="submit">Search</button>
+        </form>
     </header>
 
     <main>
@@ -38,7 +43,7 @@
             <!--5-Day Forecast-->
             <div id="five-day-section">
                 <h2>5-Day Forecast</h2>
-                <div id="five-day-forecast">
+                <div id="five-day-forecast" class="forecast-cards">
                     <!--Highs and lows, icon, etc....-->
                 </div>
             </div>

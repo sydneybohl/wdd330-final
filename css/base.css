@@ -47,15 +47,64 @@ header h1 {
     flex-wrap: wrap;
     margin: 1rem auto;
     gap: 1rem;
-    max-width: 1100px;
+    max-width: 1450px;
     padding: 0 1rem;
 }
 
-.daily-section,
-.five-day-section,
-.pollen-section,
-.comfort-section,
-.suggestion-section {
-    flex: 1;
-    min-width: 250px;
+#forecast-section {
+    display: flex;
+    gap: 3rem;
+    /* space between columns */
+    flex-wrap: wrap;
+    /* wrap on smaller screens */
+    justify-content: center;
+    /* center the content horizontally */
+}
+
+#daily-section,
+#five-day-section {
+    flex: 1 1 300px;
+    box-sizing: border-box;
+}
+
+#daily-section {
+    max-width: 500px;
+}
+
+/* Current Weather Card */
+#daily-forecast {
+    background: #f0f8ff;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+    max-width: 470px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin: 1rem auto;
+}
+
+#daily-forecast h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+#daily-forecast p {
+    margin: 0.4rem 0;
+    font-size: 0.95rem;
+}
+
+/* Forecast Cards */
+.forecast-cards {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.forecast-card {
+    background: #f0f8ff;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    width: 120px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
