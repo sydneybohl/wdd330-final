@@ -1,7 +1,15 @@
 import { getWeather } from './weather.js';
 import { displayWeather } from './weatherDisplay.js';
 
-function getCurrentLocationWeather() {
+// Show default city weather immediately
+async function loadDefaultCity() {
+    const defaultCity = "Milwaukee";
+    const weatherData = await getWeather(defaultCity);
+    displayWeather(weatherData);
+}
+
+// Try to get user's location and update if successful
+function tryUpdateWithGeolocation() {
     if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(async (position) => {
             const lat = position.coords.latitude;
@@ -10,16 +18,15 @@ function getCurrentLocationWeather() {
             const weatherData = await getWeather(`${lat},${lon}`);
             displayWeather(weatherData);
         }, (error) => {
-            console.error("Geolocation error:", error);
-            // the fallback to a default city
-            loadWeatherByLocation("Milwaukee");
+            console.warn("Geolocation error or denied:", error);
+            // Do nothing — default city is already shown
         });
     } else {
-        // the fallback location if geolocation not supported
-        loadWeatherByLocation("Milwaukee");
+        console.warn("Geolocation not supported");
     }
 }
 
+// Manual search handler
 document.getElementById("search-form").addEventListener("submit", async (e) => {
     e.preventDefault();
     const location = document.getElementById("search-input").value.trim();
@@ -28,9 +35,14 @@ document.getElementById("search-form").addEventListener("submit", async (e) => {
     }
 });
 
+// Load weather by a typed location
 async function loadWeatherByLocation(location) {
     const weatherData = await getWeather(location);
     displayWeather(weatherData);
 }
 
-getCurrentLocationWeather();
+// Initialize: show default, then try updating to user's location
+window.addEventListener("DOMContentLoaded", async () => {
+    await loadDefaultCity();         // Step 1: show default city
+    tryUpdateWithGeolocation();      // Step 2: update with location if allowed
+});

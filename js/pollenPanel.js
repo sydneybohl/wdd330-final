@@ -1,1 +1,0 @@
-/*create the pollen index breakdown and the severity of trees, grass, and weeds*/
