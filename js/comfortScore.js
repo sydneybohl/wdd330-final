@@ -1,4 +1,4 @@
-/*compute and create the personalized "Comfort Score" based on the weather and pollen for the day*/
+/*compute and create the personalized "Comfort Score" based on the weather and air quality for the day*/
 export function calculateComfortScore(weather, airQuality) {
     let score = 0;
 
