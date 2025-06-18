@@ -1,5 +1,7 @@
-/*create the daily weather forecast that will show on the website*/
+/*formating daily weather, five-day forecast, air quality, and comfort score*/
 import { displayAirQuality } from "./airQuality.js";
+import { calculateComfortScore, getComfortLabel } from './comfortScore.js';
+import { generateSuggestions } from "./suggestions.js";
 
 export function displayWeather(data) {
   const container = document.getElementById("daily-forecast");
@@ -35,5 +37,29 @@ export function displayWeather(data) {
 
   displayAirQuality(data.current.air_quality);
 
-}
+  // Calculate Comfort Score
+  const comfortScore = calculateComfortScore(data.current, data.current.air_quality);
+  const comfortLabel = getComfortLabel(comfortScore);
 
+  const comfortContainer = document.getElementById("comfort-score");
+  comfortContainer.innerHTML = `
+    <div class="comfort-card">
+      <h4>Comfort Score</h4>
+      <p><strong>${comfortScore}</strong> - ${comfortLabel}</p>
+    </div>
+  `;
+  // Suggestions 
+  const suggestions = generateSuggestions(data.current, data.current.air_quality);
+  const suggestionBox = document.getElementById("weather-suggestions");
+  suggestionBox.innerHTML = ""; // Clear previous
+
+  suggestions.forEach(({ label, text }) => {
+    const item = document.createElement("div");
+    item.className = "suggestion-item";
+    item.innerHTML = `
+    <h4>${label}</h4>
+    <p>${text}</p>
+  `;
+    suggestionBox.appendChild(item);
+  });
+}

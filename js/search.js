@@ -1,1 +1,0 @@
-/*process search inputs for weather locations from the user*/

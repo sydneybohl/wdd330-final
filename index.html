@@ -14,23 +14,14 @@
         <div class="logo-header">
             <img class="logo" src="images/clearskieslogo.png" alt="Clear Skies Logo">
             <h1>Clear Skies</h1>
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Enter city or ZIP Code" />
+                <button type="submit">Search</button>
+            </form>
         </div>
-
-        <form id="search-form">
-            <input type="text" id="search-input" placeholder="Enter city or ZIP Code" />
-            <button type="submit">Search</button>
-        </form>
     </header>
 
     <main>
-        <!--Location Display-->
-        <section id="location-section" class="centered-section">
-            <h2>Location:</h2>
-            <div id="location">
-                <!--City Name, Zip Code....-->
-            </div>
-        </section>
-
         <section id="forecast-section" class="row-layout">
             <!--Daily Weather-->
             <div id="daily-section">
@@ -51,7 +42,7 @@
 
         <section id="info-section" class="row-layout">
             <!--Air Quality-->
-            <div id="air-quality-section">
+            <div id="air-quality-section" class="info-card">
                 <h2>Air Quality Index</h2>
                 <div id="air-quality-card">
                     <!--Air quality info will be added here....-->
@@ -59,16 +50,19 @@
             </div>
 
             <!--Comfort Level-->
-            <div id="comfort-section">
+            <div id="comfort-section" class="info-card">
                 <h2>Comfort Level</h2>
+                <p>The Comfort Score combines temperature, wind, and air quality to estimate how pleasant the
+                    weather feels today. A higher score means more comfortable conditions for outdoor activities.
+                </p>
                 <div id="comfort-score">
                     <!--Calculated comfort score....-->
                 </div>
             </div>
 
             <!--Suggestions-->
-            <div id="suggestion-section">
-                <h2>Suggestions</h2>
+            <div id="suggestion-section" class="info-card">
+                <h2>Today's Recommendations</h2>
                 <div id="weather-suggestions">
                     <!--Friendly commentary or fun message....-->
                 </div>
