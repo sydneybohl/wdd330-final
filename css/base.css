@@ -65,6 +65,7 @@ header h1 {
     align-items: center;
     gap: 0.5rem;
     margin-left: 3rem;
+    position: relative;
 }
 
 /* Input styling */
@@ -79,7 +80,7 @@ header h1 {
 #search-form button {
     padding: 0.5rem 1rem;
     font-size: 1rem;
-    background-color: #005f99;
+    background-color: #0e5585;
     color: white;
     border: none;
     border-radius: 6px;
@@ -88,8 +89,39 @@ header h1 {
 }
 
 #search-form button:hover {
-    background-color: #004a7c;
+    background-color: #F7DC6F;
 }
+
+#search-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-top: none;
+    z-index: 10;
+}
+
+#search-dropdown button {
+    width: 100%;
+    padding: 0.5rem;
+    text-align: left;
+    background: white;
+    border: none;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    color: black;
+}
+
+#search-dropdown button:hover {
+    background-color: #f0f0f0;
+}
+
+.hidden {
+    display: none;
+}
+
 
 /* Start of Sections */
 .centered-section {
@@ -241,7 +273,7 @@ header h1 {
 
 .suggestion-item {
     margin-bottom: 1rem;
-    border-left: 4px solid #4a90e2;
+    border-left: 4px solid #0e5585;
     padding-left: 0.75rem;
 }
 

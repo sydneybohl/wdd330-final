@@ -1,5 +1,6 @@
 import { getWeather } from './weather.js';
 import { displayWeather } from './weatherDisplay.js';
+import { saveSearch, getSearchHistory } from './storage.js';
 
 // Show default city weather immediately
 async function loadDefaultCity() {
@@ -26,23 +27,57 @@ function tryUpdateWithGeolocation() {
     }
 }
 
-// Manual search handler
-document.getElementById("search-form").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const location = document.getElementById("search-input").value.trim();
-    if (location) {
-        loadWeatherByLocation(location);
-    }
-});
-
 // Load weather by a typed location
 async function loadWeatherByLocation(location) {
     const weatherData = await getWeather(location);
     displayWeather(weatherData);
 }
 
-// Initialize: show default, then try updating to user's location
+// Populate dropdown with saved history
+function updateDropdown() {
+    const history = getSearchHistory();
+    if (history.length === 0) {
+        dropdown.classList.add("hidden");
+        return;
+    }
+
+    dropdown.innerHTML = history
+        .map(item => `<button type="button">${item}</button>`)
+        .join("");
+
+    dropdown.querySelectorAll("button").forEach(button => {
+        button.addEventListener("click", () => {
+            searchInput.value = button.textContent;
+            dropdown.classList.add("hidden");
+        });
+    });
+
+    dropdown.classList.remove("hidden");
+}
+
+// DOM elements 
+const form = document.getElementById("search-form");
+const searchInput = document.getElementById("search-input");
+const dropdown = document.getElementById("search-dropdown");
+
+// Event listeners
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const query = searchInput.value.trim();
+    if (!query) return;
+
+    saveSearch(query);
+    dropdown.classList.add("hidden");
+    await loadWeatherByLocation(query);
+});
+
+searchInput.addEventListener("focus", updateDropdown);
+searchInput.addEventListener("blur", () => {
+    setTimeout(() => dropdown.classList.add("hidden"), 200);
+});
+
+// Initialize
 window.addEventListener("DOMContentLoaded", async () => {
-    await loadDefaultCity();         // Step 1: show default city
-    tryUpdateWithGeolocation();      // Step 2: update with location if allowed
+    await loadDefaultCity();
+    tryUpdateWithGeolocation();
 });

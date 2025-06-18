@@ -14,8 +14,9 @@
         <div class="logo-header">
             <img class="logo" src="images/clearskieslogo.png" alt="Clear Skies Logo">
             <h1>Clear Skies</h1>
-            <form id="search-form">
+            <form id="search-form" autocomplete="off">
                 <input type="text" id="search-input" placeholder="Enter city or ZIP Code" />
+                <div id="search-dropdown" class="hidden"></div>
                 <button type="submit">Search</button>
             </form>
         </div>
